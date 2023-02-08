@@ -16,7 +16,7 @@ int main(){
   end_time = clock();
   msec = (end_time - init_time) * 1000 / CLOCKS_PER_SEC;
   if (returnSize != 2)
-    return;
+    return 0;
   printf("submit1 output: [%d,%d] and spent time: %dms\n", result[0], result[1], msec);
   submitFree(result);
   return 0;
