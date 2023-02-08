@@ -18,6 +18,9 @@ int* submit1(int* nums, int numsSize, int target, int* returnSize) {
 }
 
 void safeFree(void** malloced_int_pointer) {
+  //malloced_int_pointer != NULL is to avoid: int* result = NULL; safeFree(&result);
+  //*malloced_int_pointer != NULL is to avoid free twice and more: safeFree(&result); safeFree(&result);
+  //Don't avoid: int* result; safeFree(&result); Please let the pointer initialize to NULL.
   if (malloced_int_pointer != NULL && *malloced_int_pointer != NULL) {
     free(*malloced_int_pointer);
     *malloced_int_pointer = NULL;
