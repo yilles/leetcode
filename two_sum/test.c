@@ -14,9 +14,10 @@ int main(){
   for (int i = 0; i < 1000000; ++i) {
     result = submit1(nums, numSize, target, &returnSize);
     if (i == 0)
+    {
       printf("submit1 output: [%d,%d] ", result[0], result[1]);
-    submitFree(result);
-    result = NULL;
+      safeFree(&result);
+    }
   }
   end_time = clock();
   msec = (end_time - init_time) * 1000 / CLOCKS_PER_SEC;

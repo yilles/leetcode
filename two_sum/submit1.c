@@ -17,8 +17,9 @@ int* submit1(int* nums, int numsSize, int target, int* returnSize) {
   return result;
 }
 
-void submitFree(int* malloced_int_pointer) {
-  if (malloced_int_pointer != NULL) {
-    free(malloced_int_pointer);
+void safeFree(void** malloced_int_pointer) {
+  if (malloced_int_pointer != NULL && *malloced_int_pointer != NULL) {
+    free(*malloced_int_pointer);
+    *malloced_int_pointer = NULL;
   }
 }
