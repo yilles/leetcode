@@ -2,34 +2,41 @@
 #include <time.h>
 #include "common.h"
 
+void funcTimer(int* msec, int** result, int* nums, int numsSize, int target, int* returnSize, int*(*func)(int*, int, int, int*)){
+    clock_t init_time = clock();
+    *result = (*func)(nums, numsSize, target, returnSize);
+    clock_t end_time = clock();
+    if (msec == NULL)
+      msec = 0;
+    *msec = *msec + (end_time - init_time) * 1000 / CLOCKS_PER_SEC;
+    return;
+}
+
 int main(){
   clock_t init_time, end_time;
-  int msec;
-  int nums[] = {20, 10, 9, 5, 2, 7};
-  int numSize = 6;
+  int msec = 0;
+  int nums[] = {20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 10, 9, 5, 2, 7};
+  int numsSize = 17;
   int target = 9;
   int returnSize = 0;
-  int testCounts = 100000000;
+  int testCounts = 10000000;
   int* result = NULL;
 
-  init_time = clock();
   printf("target: %d\n", target);
   printf("input: ");
-  for (int i = 0; i < numSize; ++i) {
+  for (int i = 0; i < numsSize; ++i) {
     printf("%d", nums[i]);
-    if (i != numSize - 1)
+    if (i != numsSize - 1)
       printf(",");
   }
   printf("\n");
   for (int i = 0; i < testCounts; ++i) {
-    result = twoSum(nums, numSize, target, &returnSize);
-    if (i == 0)
+    funcTimer(&msec, &result, nums, numsSize, target, &returnSize, twoSum);
+    if (i == 0 && result != NULL)
       printf("output: [%d,%d] ", result[0], result[1]);
     //Why not we use free in here. To avoid the lib crt and main crt is different. Where is the var malloced, to free it in there.
     safeFree(&result);
   }
-  end_time = clock();
-  msec = (end_time - init_time) * 1000 / CLOCKS_PER_SEC;
   printf("and test %d spent time: %dms\n", testCounts, msec);
   return 0;
 }
