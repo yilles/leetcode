@@ -7,7 +7,6 @@ typedef struct {
   int value;
 } dictionary;
 
-//dictionary hashTable[7];
 dictionary* hashTable;
 
 int mod = 7;
@@ -31,7 +30,7 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
   int* result = (int*)malloc(sizeof(int)*2);
   hashTable = (dictionary*)malloc(sizeof(dictionary)*mod);
   for (int i = 0; i < numsSize; ++i) {
-    if (target - nums[i] > 0) {
+    if (target - nums[i] >= 0) {
       if (search(target - nums[i]).key + nums[i] != target) {
         int key = nums[i];
         int value = i;
