@@ -7,8 +7,8 @@ typedef struct {
   int value;
 } dictionary;
 
-dictionary hashTable[7];
-//dictionary* hashTable;
+//dictionary hashTable[7];
+dictionary* hashTable;
 
 int mod = 7;
 //Hash Function
@@ -29,7 +29,7 @@ void insert(int key, int value) {
 
 int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
   int* result = (int*)malloc(sizeof(int)*2);
-  //hashTable = (dictionary*)malloc(sizeof(dictionary)*mod);
+  hashTable = (dictionary*)malloc(sizeof(dictionary)*mod);
   for (int i = 0; i < numsSize; ++i) {
     if (target - nums[i] > 0) {
       if (search(target - nums[i]).key + nums[i] != target) {
@@ -41,12 +41,12 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
         *returnSize = 2;
         result[0] = search(target - nums[i]).value;
         result[1] = i;
-        //free(hashTable);
+        free(hashTable);
         return result;
       }
     }
   }
-  //free(hashTable);
+  free(hashTable);
   return result;
 }
 
