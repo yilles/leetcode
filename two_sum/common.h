@@ -1,2 +1,2 @@
-int* submit1(int*, int, int, int*);
+int* twoSum(int*, int, int, int*);
 void safeFree(void**);
