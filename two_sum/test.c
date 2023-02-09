@@ -24,9 +24,7 @@ int main(){
   for (int i = 0; i < testCounts; ++i) {
     result = twoSum(nums, numSize, target, &returnSize);
     if (i == 0)
-    {
       printf("output: [%d,%d] ", result[0], result[1]);
-    }
     //Why not we use free in here. To avoid the lib crt and main crt is different. Where is the var malloced, to free it in there.
     safeFree(&result);
   }

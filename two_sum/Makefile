@@ -1,9 +1,9 @@
 build:
-	cl /c submit1.c
-	lib submit1.obj
+	cl /c submit2.c
+	lib submit2.obj
 
 test: build
-	cl submit1.lib test.c
+	cl submit2.lib test.c
 	test.exe
 
 clean:
