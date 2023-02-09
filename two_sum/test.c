@@ -15,9 +15,9 @@ void funcTimer(int* msec, int** result, int* nums, int numsSize, int target, int
 int main(){
   clock_t init_time, end_time;
   int msec = 0;
-  int nums[] = {20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 10, 9, 5, 2, 7};
-  int numsSize = 17;
-  int target = 9;
+  int nums[] = {5, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, -3};
+  int numsSize = 40;
+  int target = 0;
   int returnSize = 0;
   int testCounts = 10000000;
   int* result = NULL;

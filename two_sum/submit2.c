@@ -9,10 +9,13 @@ typedef struct {
 
 dictionary* hashTable;
 
-int mod = 7;
+int mod = 701;
 //Hash Function
 int h(int key) {
-  return key % mod;
+  int result = key % mod;
+  if (result < 0)
+    result = 0 - result;
+  return result;
 }
 
 dictionary search(int key) {
@@ -30,19 +33,17 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
   int* result = (int*)malloc(sizeof(int)*2);
   hashTable = (dictionary*)malloc(sizeof(dictionary)*mod);
   for (int i = 0; i < numsSize; ++i) {
-    if (target - nums[i] >= 0) {
-      if (search(target - nums[i]).key + nums[i] != target) {
-        int key = nums[i];
-        int value = i;
-        insert(key, value);
-      }
-      else {
-        *returnSize = 2;
-        result[0] = search(target - nums[i]).value;
-        result[1] = i;
-        free(hashTable);
-        return result;
-      }
+    if (search(target - nums[i]).key + nums[i] != target) {
+      int key = nums[i];
+      int value = i;
+      insert(key, value);
+    }
+    else {
+      *returnSize = 2;
+      result[0] = search(target - nums[i]).value;
+      result[1] = i;
+      free(hashTable);
+      return result;
     }
   }
   free(hashTable);
