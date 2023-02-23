@@ -7,8 +7,8 @@ void funcTimer(int* msec, int** result, int* nums, int numsSize, int target, int
     *result = (*func)(nums, numsSize, target, returnSize);
     clock_t end_time = clock();
     if (msec == NULL)
-      msec = 0;
-    *msec = *msec + (end_time - init_time) * 1000 / CLOCKS_PER_SEC;
+      *msec = 0;
+    *msec += (end_time - init_time) * 1000 / CLOCKS_PER_SEC;
     return;
 }
 
