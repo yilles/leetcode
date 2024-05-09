@@ -1,12 +1,13 @@
 build:
-	cl /c submit2.c
-	lib submit2.obj
+	gcc -c submit1.c submit2.c
 
 test: build
-	cl submit2.lib test.c
-	test.exe
+	gcc submit1.o test.c -o test1
+	gcc submit2.o test.c -o test2
+	echo "Test 1"
+	./test1
+	echo "Test 2"
+	./test2
 
 clean:
-	@if exist *obj del *obj
-	@if exist *lib del *lib
-	@if exist *exe del *exe
+	rm *o test1 test2
