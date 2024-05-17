@@ -1,1 +1,0 @@
-/home/yilles/leetcode/two_sum/rust/target/release/rust: /home/yilles/leetcode/two_sum/rust/src/main.rs /home/yilles/leetcode/two_sum/rust/src/submit1.rs /home/yilles/leetcode/two_sum/rust/src/submit2.rs
